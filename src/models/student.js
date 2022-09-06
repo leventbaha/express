@@ -1,12 +1,36 @@
+const color = require('colors')
+
 class Student {
-	constructor(name, surname, year, username) {
-		this.name = name
-		this.surname = surname
-		this.year = year
-		this.username = username
+	constructor(studentID, username, password) {
+		this.studentID = studentID
+		this.username = ''
 		this.password = ''
 		this.courses = []
-		this.exams = []
+	}
+
+	addCourse(course) {
+		this.courses.push(course)
+	}
+
+	takenCourse(course) {
+		course.takenBy.push(this)
+	}
+
+	get personalInfo() {
+		return `
+# ${'StudentID:'.rainbow.bold} ${this.studentID} has
+## ${this.courses.length} courses
+
+${this.courses
+	.map(course => {
+		return `### ${course.coursename.red.bold}`
+	})
+	.join('\n')}
+  `
+	}
+
+	set personalInfo(newValue) {
+		throw new Error('Profile is only a getter. You cannot override it.')
 	}
 }
 

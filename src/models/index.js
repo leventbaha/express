@@ -1,26 +1,17 @@
 const Student = require('./student')
 const Course = require('./course')
 
-const marie = new Student('Marie', 'Scholz', 1, 'marie578')
-const markus = new Student('Markus', 'Malz', 3, 'markusm')
-const thomas = new Student('Thomas', 'Kassel', 4, 'thomas96')
+const marie = new Student(9587, '', '')
+const markus = new Student(6881, '', '')
+const thomas = new Student(5457, '', '')
 
 const math101 = new Course('math101')
 const compsci101 = new Course('compsci101')
-const algorithms = new Course('algorithms')
-const databaseSystems = new Course('databaseSystems')
-
-function addCourse(name, surname, year, username) {
-	return {
-		name,
-		surname,
-		year,
-		username,
-		courses: [],
-	}
-}
 
 marie.addCourse(math101)
 marie.addCourse(compsci101)
-markus.addCourse(algorithms)
-thomas.addCourse(databaseSystems)
+
+markus.takenCourse(math101)
+thomas.takenCourse(math101)
+
+console.log(marie.personalInfo)
