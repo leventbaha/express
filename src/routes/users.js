@@ -9,13 +9,11 @@ const users = [
 ]
 
 /* GET users listing. */
-// eslint-disable-next-line consistent-return
 router.get('/', (req, res) => {
 	if (req.query.name) {
-		// eslint-disable-next-line eqeqeq
-		return res.send(users.find(user => user.name == req.query.name))
+		return res.send(users.find(user => user.name === req.query.name))
 	}
-	res.send(users)
+	return res.send(users)
 })
 
 router.get('/:userId', function (req, res, next) {
